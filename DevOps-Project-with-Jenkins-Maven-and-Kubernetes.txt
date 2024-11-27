@@ -55,7 +55,8 @@ $ nano sshd_config
 $ service sshd reload
 $ ssh-keygen
 public key is at /home/ansadmin/.ssh/id_rsa.pub
-$ sudo su , amazon-linux-extras install ansible2
+$ sudo su , 
+$ amazon-linux-extras install ansible2
 $ ansible --version
 ===============================Integrate Ansible with Jenkins==================================
 $ cd /opt
@@ -89,10 +90,10 @@ $ nano regapp.yml
      chdir: /opt/docker
 
   - name: create tag to push image onto dockerhub
-    command: docker tag regapp:latest ashfaque9x/regapp:latest
+    command: docker tag regapp:latest lakshmidevikunda79/regapp:latest
 
   - name: push docker image
-    command: docker push ashfaque9x/regapp:latest
+    command: docker push lakshmidevikunda79/regapp:latest
 
 $ ansible-playbook regapp.yml --check
 $ ansible-playbook regapp.yml
@@ -125,7 +126,7 @@ $ eksctl version
 
 # Setup Kubernetes using eksctl
 Refer===https://github.com/aws-samples/eks-workshop/issues/734
-eksctl create cluster --name virtualtechbox-cluster \
+eksctl create cluster --name lakshmi1techbox-cluster \
 --region ap-south-1 \
 --node-type t2.small \
 $ kubectl get nodes
@@ -136,7 +137,7 @@ $ nano regapp-deployment.yml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: virtualtechbox-regapp
+  name: lakshmi1techbox-regapp
   labels:
      app: regapp
 
@@ -153,7 +154,7 @@ spec:
     spec:
       containers:
       - name: regapp
-        image: ashfaque9x/regapp
+        image: lakshmidevikunda79/regapp
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
@@ -169,7 +170,7 @@ $ nano regapp-service.yml
 apiVersion: v1
 kind: Service
 metadata:
-  name: virtualtechbox-service
+  name: lakshmi1techbox-service
   labels:
     app: regapp 
 spec:
@@ -208,7 +209,7 @@ $ nano kube_deploy.yml
       command: kubectl apply -f regapp-service.yml
 
     - name: update deployment with new pods if image updated in docker hub
-      command: kubectl rollout restart deployment.apps/virtualtechbox-regapp
+      command: kubectl rollout restart deployment.apps/lakshmi1techbox-regapp
 
 $ ansible-playbook kube_deploy.yml
 Exec command:ansible-playbook /opt/Docker/kube_deploy.yml
