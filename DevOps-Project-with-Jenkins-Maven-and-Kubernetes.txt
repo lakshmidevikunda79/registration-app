@@ -215,8 +215,8 @@ $ ansible-playbook kube_deploy.yml
 Exec command:ansible-playbook /opt/Docker/kube_deploy.yml
 
 ===============================Cleanup==================================
-$ kubectl delete deployment.apps/virtualtechbox-regapp
-$ kubectl delete service/virtualtechbox-service
-$ eksctl delete cluster virtualtechbox --region ap-south-1     OR    eksctl delete cluster --region=ap-south-1 --name=virtualtechbox-cluster
+$ kubectl delete deployment.apps/lakshmi1techbox-regapp
+$ kubectl delete service/lakshmi1techbox-service
+$ eksctl delete cluster lakshmi1techbox-cluster --region ap-south-1     OR    eksctl delete cluster --region=ap-south-1 --name=virtualtechbox-cluster
 
 
